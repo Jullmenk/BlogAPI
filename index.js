@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require('dotenv').config()
 const PORT = process.env.PORT || 3001;
-const User = require('../API/models/User')
+const User = require('./models/User')
 const Email = require('./models/Email')
 const cors = require('cors');
 const { default: mongoose } = require("mongoose");
@@ -14,7 +14,7 @@ const secret = 'scadsfdsfdvdsvssdasa'
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const fs = require('fs')
-const Post =  require('../API/models/Post')
+const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
 const BASE_URL = process.env.BASE_URL
 app.use(cors({
