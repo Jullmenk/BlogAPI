@@ -17,6 +17,7 @@ const fs = require('fs')
 const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
 const BASE_URL = process.env.BASE_URL
+
 app.use(cors({
   credentials: true,
   origin:BASE_URL
@@ -26,7 +27,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/uploads',express.static(__dirname + '/uploads'))
 
-
+res.cookie("token", token, { sameSite: 'none', secure: true });
 
 mongoose.connect(process.env.DATABASE)
 
@@ -163,6 +164,15 @@ app.get('/post/:id',async(req,res)=>{
   const postDoc= await Post.findById(id)
   res.json(postDoc)
 })
+
+jwt.verify(token, secret, {}, (err, info) => {
+  if (err) {
+    console.error('JWT verification error:', err);
+    res.status(401).json({ error: 'Unauthorized' });
+  } else {
+    res.json(info);
+  }
+});
 
 app.listen(PORT, () => {
   console.log("Backend is runningggg int the port:",PORT);
