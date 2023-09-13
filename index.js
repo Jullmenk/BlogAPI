@@ -16,10 +16,11 @@ const upload = multer({dest:'uploads/'})
 const fs = require('fs')
 const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
-const BASE_URL = process.env.BASE_URL
+// const BASE_URL = process.env.BASE_URL
+
 app.use(cors({
   credentials: true,
-  origin:BASE_URL
+  origin:'https://caliamag-api.onrender.com'
 }))
   
 app.use(express.json())
@@ -28,7 +29,7 @@ app.use('/uploads',express.static(__dirname + '/uploads'))
 
 
 
-mongoose.connect(process.env.DATABASE)
+mongoose.connect('mongodb+srv://julmenk:pa55w.rd@cluster0.bbhlzu8.mongodb.net/blogcaliamag?retryWrites=true&w=majority')
 
 //Code for register
 app.post('/Register',upload.single('file'),async (req,res)=>{
@@ -163,7 +164,6 @@ app.get('/post/:id',async(req,res)=>{
   const postDoc= await Post.findById(id)
   res.json(postDoc)
 })
-
 
 app.listen(PORT, () => {
   console.log("Backend is runningggg int the port:",PORT);
