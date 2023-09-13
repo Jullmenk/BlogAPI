@@ -18,6 +18,7 @@ const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
 // const BASE_URL = process.env.BASE_URL
 
+
 app.use(cors({
   credentials: true,
   origin:'https://caliamag-api.onrender.com'
@@ -49,7 +50,6 @@ app.post('/Register',upload.single('file'),async (req,res)=>{
   } catch (err) {
     res.status(400).json(err)
   }
-
 })
 
 // Create a Nodemailer transporter
@@ -125,6 +125,7 @@ app.post('/Login',async (req,res)=>{
 //Read the cookies
 app.get('/connected',(req,res)=>{
   const {token} = req.cookies
+  if(!token) return
   jwt.verify(token,secret,{},(err,info)=>{
     if(err) throw err;
     res.json(info)
