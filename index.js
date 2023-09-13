@@ -11,6 +11,7 @@ const salt = bcrypt.genSaltSync(10)
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const secret = 'scadsfdsfdvdsvssdasa'
+const token = jwt.sign(payload, secret);
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const fs = require('fs')
