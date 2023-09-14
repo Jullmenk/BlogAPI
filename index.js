@@ -76,8 +76,7 @@ app.post('/newsletter', async (req,res)=>{
       html: `
       <p>Ola ${name},</p>
       <p>Estamos muito feliz por te ter por aqui e estamos a enviar este email para confirmar que a sua subscrição ao nosso website foi bem sucedida.</p>
-      <p>CALIAMAG ${currentYear}</p>
-    `,
+      <p>CALIAMAG ${currentYear}</p>`,
       };
 
     // Send the email
@@ -125,7 +124,6 @@ app.post('/Login',async (req,res)=>{
 //Read the cookies
 app.get('/connected',(req,res)=>{
   const {token} = req.cookies
-  if(!token) return
   jwt.verify(token,secret,{},(err,info)=>{
     if(err) throw err;
     res.json(info)
