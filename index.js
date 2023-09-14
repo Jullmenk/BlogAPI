@@ -34,17 +34,17 @@ mongoose.connect('mongodb+srv://julmenk:pa55w.rd@cluster0.bbhlzu8.mongodb.net/bl
 
 //Code for register
 app.post('/Register',upload.single('file'),async (req,res)=>{
-  const {originalname,path} = req.file
-  const parts = originalname.split('.')
-  const ext = parts[parts.length-1]
-  const newPath = path+'.'+ext
-  fs.renameSync(path,newPath)
+  // const {originalname,path} = req.file
+  // const parts = originalname.split('.')
+  // const ext = parts[parts.length-1]
+  // const newPath = path+'.'+ext
+  // fs.renameSync(path,newPath)
   const {username,password} = req.body
   try {
     const userDoc = await User.create({
     username,
     password:bcrypt.hashSync(password,salt),
-    cover:newPath,
+    // cover:newPath,
     })
     res.json(userDoc)
   } catch (err) {
