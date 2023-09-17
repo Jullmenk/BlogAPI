@@ -21,6 +21,7 @@ const nodemailer = require('nodemailer');
 
 app.use(cors({
   credentials: true,
+  // origin:'http://localhost:3000'
   origin:'https://caliamag-api.onrender.com'
 }))
   
@@ -134,7 +135,7 @@ app.post('/logout',(req,res)=>{
   res.cookie('token','').json('ok')
 })
 
-//get Post files
+//function to get the Post files from the front
 app.post('/post',upload.single('file'),async (req,res)=>{
   const {originalname,path} = req.file
   const parts = originalname.split('.')
@@ -151,8 +152,10 @@ app.post('/post',upload.single('file'),async (req,res)=>{
   })
    console.log('Response data:', postDoc); 
    res.json(postDoc)
-})
+ })
 
+
+ //function to find all the post and send to the front
 app.get('/post', async (req,res)=>{
   res.json(await Post.find().sort({createdAt:-1}))
 })
