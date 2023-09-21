@@ -18,13 +18,13 @@ const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
 const handlebars = require('handlebars')
 const {cloudinary} = require('./Utils/cloudinary');
-// const BASE_URL = process.env.BASE_URL
+const BASE_URL = process.env.BASE_URL
 
 
 app.use(cors({
   credentials: true,
   // origin:'http://localhost:3000'
-  origin:'https://caliamag-api.onrender.com'
+  origin:BASE_URL,
 }))
   
 app.use(express.json())
@@ -33,7 +33,7 @@ app.use('/uploads',express.static(__dirname + '/uploads'))
 
 
 
-mongoose.connect('mongodb+srv://julmenk:pa55w.rd@cluster0.bbhlzu8.mongodb.net/blogcaliamag?retryWrites=true&w=majority')
+mongoose.connect(process.env.DATABASE)
 
 //Code for register
 app.post('/Register',upload.single('file'),async (req,res)=>{
