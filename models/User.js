@@ -10,7 +10,10 @@ const UserSchema = new Schema({
         type:String,
         required:true,
     },
-    cover:String,
+    role:{
+        type:String,
+        required:true,
+    }
 },{timestamps:true})
 
 const Usermodel = model("User",UserSchema)

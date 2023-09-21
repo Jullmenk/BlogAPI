@@ -16,6 +16,8 @@ const upload = multer({dest:'uploads/'})
 const fs = require('fs')
 const Post =  require('./models/Post')
 const nodemailer = require('nodemailer');
+const handlebars = require('handlebars')
+const {cloudinary} = require('./Utils/cloudinary');
 // const BASE_URL = process.env.BASE_URL
 
 
@@ -35,17 +37,12 @@ mongoose.connect('mongodb+srv://julmenk:pa55w.rd@cluster0.bbhlzu8.mongodb.net/bl
 
 //Code for register
 app.post('/Register',upload.single('file'),async (req,res)=>{
-  // const {originalname,path} = req.file
-  // const parts = originalname.split('.')
-  // const ext = parts[parts.length-1]
-  // const newPath = path+'.'+ext
-  // fs.renameSync(path,newPath)
-  const {username,password} = req.body
+  const {username,password,role} = req.body
   try {
     const userDoc = await User.create({
     username,
     password:bcrypt.hashSync(password,salt),
-    // cover:newPath,
+    role,
     })
     res.json(userDoc)
   } catch (err) {
@@ -65,20 +62,26 @@ const transporter = nodemailer.createTransport({
 
 app.post('/newsletter', async (req,res)=>{
   const {useremail} = req.body
+  
   try {
+    const currentDate = new Date().getFullYear()
     const emailDoc = await Email.create({email:useremail})
     const atIndex = useremail.indexOf('@');
     const currentYear = new Date().getFullYear();
     const name = useremail.slice(0, atIndex)
+    const source = fs.readFileSync('emailtemplate.html','utf-8').toString();
+    const template = handlebars.compile(source)
+    const replacements = {
+      username:name,
+      year:currentDate,
+    }
+    const htmltosend = template(replacements)
     const mailOptions = {
       from: 'caliamagao@gmail.com', // Sender's email address
       to: useremail, // Recipient's email address (you can use the provided email or a different one)
       subject: 'Bem-vindo a nossa Comunidade', // Email subject
-      html: `
-      <p>Ola ${name},</p>
-      <p>Estamos muito feliz por te ter por aqui e estamos a enviar este email para confirmar que a sua subscrição ao nosso website foi bem sucedida.</p>
-      <p>CALIAMAG ${currentYear}</p>`,
-      };
+      html:htmltosend, 
+    };
 
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
@@ -109,6 +112,7 @@ app.post('/Login',async (req,res)=>{
           res.cookie("token",token).json({
             id:userDoc._id,
             username,
+            role:userDoc.role,
           })
         })
       }else{
@@ -137,21 +141,26 @@ app.post('/logout',(req,res)=>{
 
 //function to get the Post files from the front
 app.post('/post',upload.single('file'),async (req,res)=>{
-  const {originalname,path} = req.file
-  const parts = originalname.split('.')
-  const ext = parts[parts.length-1]
-  const newPath = path+'.'+ext
-  fs.renameSync(path,newPath)
-  const {title,summary,content,category} = req.body
+  try {
+  const {title,summary,content,category,file} = req.body
+  const uploadResponse = await cloudinary.uploader.upload(file,{
+    upload_preset:'posts'
+  })
+
   const postDoc = await Post.create({
     title,
     summary,
     content,
     category,
-    cover:newPath,
+    cover:uploadResponse.url,
   })
    console.log('Response data:', postDoc); 
-   res.json(postDoc)
+   res.status(200).json(postDoc)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({err:`Error: ${error}`})
+  }
+  
  })
 
 
@@ -162,9 +171,15 @@ app.get('/post', async (req,res)=>{
 
 
 app.get('/post/:id',async(req,res)=>{
+  try {
   const {id} = req.params
   const postDoc= await Post.findById(id)
-  res.json(postDoc)
+  postDoc.views += 1
+  await postDoc.save();
+  res.json(postDoc)}
+  catch(error){
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 })
 
 app.listen(PORT, () => {

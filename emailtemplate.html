@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flex{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .mainbox{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            flex-direction: column;
+            background-color: rgb(240, 240, 240);
+        }
+        .mainboxdiv{
+            background-color: white;
+            width: 50%;
+            height: 90%;
+            flex-direction: column;
+            justify-content: start;
+        }
+        .logo{
+            width: 120px;
+            height: 120px;
+        }
+        .mainboxdivtop{
+            align-items: center;
+            background-color:rgb(56,58,86);
+            width: 100%;
+            height: 30%;
+            flex-direction: column;
+        }
+        .mainboxdivtop h1{
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            font-size: 3rem;
+            font-weight: 100;
+            margin: 0;
+        }
+        .mainboxdivbottom{
+            height: 60%;
+            padding: 20px 100px;
+        }
+        .rodape{
+            height: 10%;
+            width: 100%;
+            background-color:rgb(240, 240, 240) ;
+        }
+        .username{
+            color: green;
+        }
+        a{
+            padding: 15px 20px;
+            background-color: green;
+            border: none;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainbox flex">
+        <div class="mainboxdiv flex">
+            <div class="mainboxdivtop flex">
+                <img class="logo" src="https://res.cloudinary.com/dkvsuatxf/image/upload/v1695305991/posts/fvezy874ihdqksctrr3u.png" alt="">
+                <h1>Bem-vindo</h1>
+            </div>
+           <div class="mainboxdivbottom">
+            <p >Olá,<span class="username">{{username}}</span></p>
+            <p>
+                É com grande alegria que damos as boas-vindas a você à nossa Newsletter! Estamos empolgados por você se juntar à nossa comunidade de leitores e receber atualizações regulares sobre todas as notícias.
+            </p>
+            <p>Nossa Newsletter é o seu passaporte para um mundo de conteúdo exclusivo, dicas úteis e informações relevantes. Aqui estão algumas coisas emocionantes que você pode esperar:</p>
+            <ul>
+                <li>Conteúdo Exclusivo: Nossos especialistas estão dedicados a trazer a você informações de alta qualidade, artigos exclusivos e insights valiosos sobre [Tópico da Newsletter].</li>
+                <li>Novidades em Primeira Mão: Você será o primeiro a saber sobre os lançamentos de produtos, eventos e promoções especiais relacionadas a [Sua Empresa ou Tópico].</li>
+            </ul>
+            <p>
+                Agradecemos por confiar em nós como sua fonte confiável de informações. Comprometemo-nos a fornecer conteúdo de qualidade que enriqueça sua vida e aprimore seus conhecimentos
+            </p>
+            <p>
+                Lembre-se de que estamos aqui para você. Se tiver alguma pergunta, sugestão ou desejar compartilhar algo conosco, não hesite em nos contatar. A sua opinião é fundamental para nós.
+            </p>
+            <p>Agora que você faz parte da nossa comunidade, fique atento à sua caixa de entrada, pois nossa Newsletter será enviada regularmente para mantê-lo atualizado.</p>
+            <p>
+                Mais uma vez, obrigado por se juntar a nós! Mal podemos esperar para compartilhar conhecimentos incríveis com você.
+            </p>
+                <a href="https://caliamag-api.onrender.com/">Voltar ao nosso site</a>
+        </div>
+        <div class="rodape flex">
+            <p>Caliamag {{year}}©, Todos os direitos reservados</p>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
