@@ -8,24 +8,108 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         
+<style>
+    body{
+        width: 100%; position: relative;overflow: hidden;height: 100vh;  background-color: rgb(240, 240, 240);
+    }
+    .mainbox{
+        width: 100%; height: 100%;position: relative; background-color: rgb(240, 240, 240);
+    }
+    .mainboxdiv{
+        margin-left: 25%; background-color: white;width: 50%;height: 90%;
+    }
+    .mainboxtop{
+        position: relative; background-color:rgb(56,58,86);width: 100%;height: 30%;
+    }
+    .logo{
+        display: block; margin-left: 40%;padding-top: 10%; width: 120px;height: 120px;
+    }
+    .mainboxmiddle{
+        height: 60%;padding: 20px 100px; color: black;
+    }
+    .mainboxbottom{
+        height: 10%;width: 100%;background-color:rgb(240, 240, 240) ;
+    }
+    .mainboxbottom p{
+        padding-top: 20px; margin-left: 30%;width: 50%;
+    }
+    @media (max-width:430px) 
+    {
+        body{
+            background-color: white;
+            overflow-y: visible;
+        }
+        .mainboxdiv{
+        margin-left: 0; background-color: white;width: 100%;height: auto;
+    }
+    .mainbox{
+        background-color: white;
+    }
+    .mainboxmiddle{
+        height: 100%;
+        padding: 20px;
+    }
+    .logo{
+        margin-left: 30%;
+        padding-top: 8%;
+    }
+    .mainboxtop{
+        height: 180px;
+    }
+    .mainboxbottom p{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .mainboxbottom{
+        padding-bottom: 20px;
+    }
+    }
 
+    @media (min-width:550px) and (max-width:1280px) {
+
+        body{
+            overflow-y: visible;
+        }
+        .mainboxdiv{
+        margin-left: 9%; background-color: white;width: 80%;height: auto;
+
+    }
+    .mainboxmiddle{
+        height: 100%;
+        padding: 50px;
+    }
+    .logo{
+        margin-left: 40%;
+        padding-top: 5%;
+    }
+    .mainboxtop{
+        height: 180px;
+    }
+    .mainboxbottom p{
+        width: 90%;
+        margin-left: 20%;
+    }
+    .mainboxbottom{
+        padding-bottom: 20px;
+    }
+    }
+</style>
 </head>
-<body style=" display: flex;justify-content: center;align-items: center;">
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;position: relative;flex-direction: column; background-color: rgb(240, 240, 240);">
-        <div style="display: flex;background-color: white;width: 50%;height: 90%;flex-direction: column;justify-content: start;">
-            <div style="display: flex; justify-content: center;align-items: center;background-color:rgb(56,58,86);width: 100%;height: 30%;flex-direction: column;">
-                <img style="width: 120px;height: 120px;" src="https://res.cloudinary.com/dkvsuatxf/image/upload/v1695305991/posts/fvezy874ihdqksctrr3u.png" alt="">
-                <h1 style="font-family: 'Dancing Script', cursive;color: white;font-size: 3rem;font-weight: 100;margin: 0;">Bem-vindo</h1>
+<body style=" ">
+    <div class="mainbox">
+        <div class="mainboxdiv" >
+            <div class="mainboxtop">
+                <img class="logo" src="https://res.cloudinary.com/dkvsuatxf/image/upload/v1695305991/posts/fvezy874ihdqksctrr3u.png" alt="">
             </div>
-           <div style="height: 60%;padding: 20px 100px;" >
+           <div class="mainboxmiddle" >
             <p >Olá,<span style="color:green;">{{username}}</span></p>
             <p>
                 É com grande alegria que damos as boas-vindas a você à nossa Newsletter! Estamos empolgados por você se juntar à nossa comunidade de leitores e receber atualizações regulares sobre todas as notícias.
             </p>
             <p>Nossa Newsletter é o seu passaporte para um mundo de conteúdo exclusivo, dicas úteis e informações relevantes. Aqui estão algumas coisas emocionantes que você pode esperar:</p>
             <ul>
-                <li>Conteúdo Exclusivo: Nossos especialistas estão dedicados a trazer a você informações de alta qualidade, artigos exclusivos e insights valiosos sobre [Tópico da Newsletter].</li>
-                <li>Novidades em Primeira Mão: Você será o primeiro a saber sobre os lançamentos de produtos, eventos e promoções especiais relacionadas a [Sua Empresa ou Tópico].</li>
+                <li>Conteúdo Exclusivo: Nossos especialistas estão dedicados a trazer a você informações de alta qualidade, artigos exclusivos e insights valiosos.</li>
+                <li>Novidades em Primeira Mão: Você será o primeiro a saber sobre os lançamentos de produtos, eventos e promoções especiais relacionadas a caliamag.</li>
             </ul>
             <p>
                 Agradecemos por confiar em nós como sua fonte confiável de informações. Comprometemo-nos a fornecer conteúdo de qualidade que enriqueça sua vida e aprimore seus conhecimentos
@@ -33,14 +117,14 @@
             <p>
                 Lembre-se de que estamos aqui para você. Se tiver alguma pergunta, sugestão ou desejar compartilhar algo conosco, não hesite em nos contatar. A sua opinião é fundamental para nós.
             </p>
-            <p>Agora que você faz parte da nossa comunidade, fique atento à sua caixa de entrada, pois nossa Newsletter será enviada regularmente para mantê-lo atualizado.</p>
+            <p>Agora que você faz parte da nossa comunidade, fique atento à sua caixa de email, pois nossa Newsletter será enviada regularmente para mantê-lo atualizado.</p>
             <p>
                 Mais uma vez, obrigado por se juntar a nós! Mal podemos esperar para compartilhar conhecimentos incríveis com você.
             </p>
-                <a href="https://caliamag-api.onrender.com/">Voltar ao nosso site</a>
+                <a style="padding: 10px 20px; background-color: green; color: white;text-decoration: none;" href="https://caliamag-api.onrender.com/">Voltar ao nosso site</a>
         </div>
-        <div style="display: flex;justify-content: center;height: 10%;width: 100%;background-color:rgb(240, 240, 240) ;">
-            <p>Caliamag {{year}}©, Todos os direitos reservados</p>
+        <div class="mainboxbottom">
+            <p>Caliamag {{year}} ©, Todos os direitos reservados</p>
         </div>
         </div>
     </div>

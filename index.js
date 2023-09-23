@@ -23,7 +23,7 @@ const BASE_URL = process.env.BASE_URL
 
 app.use(cors({
   credentials: true,
- // origin:'http://localhost:3000'
+  //origin:'http://localhost:3000'
    origin:BASE_URL,
 }))
   
