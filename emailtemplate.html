@@ -8,83 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         
-    <style>
-        *{
-            font-family: sans-serif;
-        }
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .flex{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-           
-        }
-        .mainbox{
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            flex-direction: column;
-            background-color: rgb(240, 240, 240);
-        }
-        .mainboxdiv{
-            background-color: white;
-            width: 50%;
-            height: 90%;
-            flex-direction: column;
-            justify-content: start;
-        }
-        .logo{
-            width: 120px;
-            height: 120px;
-        }
-        .mainboxdivtop{
-            align-items: center;
-            background-color:rgb(56,58,86);
-            width: 100%;
-            height: 30%;
-            flex-direction: column;
-        }
-        .mainboxdivtop h1{
-            font-family: 'Dancing Script', cursive;
-            color: white;
-            font-size: 3rem;
-            font-weight: 100;
-            margin: 0;
-        }
-        .mainboxdivbottom{
-            height: 60%;
-            padding: 20px 100px;
-        }
-        .rodape{
-            height: 10%;
-            width: 100%;
-            background-color:rgb(240, 240, 240) ;
-        }
-        .username{
-            color: green;
-        }
-        a{
-            padding: 15px 20px;
-            background-color: green;
-            border: none;
-            color: white;
-            text-decoration: none;
-        }
-    </style>
+
 </head>
-<body>
-    <div class="mainbox flex">
-        <div class="mainboxdiv flex">
-            <div class="mainboxdivtop flex">
-                <img class="logo" src="https://res.cloudinary.com/dkvsuatxf/image/upload/v1695305991/posts/fvezy874ihdqksctrr3u.png" alt="">
-                <h1>Bem-vindo</h1>
+<body style=" display: flex;justify-content: center;align-items: center;">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;position: relative;flex-direction: column; background-color: rgb(240, 240, 240);">
+        <div style="display: flex;background-color: white;width: 50%;height: 90%;flex-direction: column;justify-content: start;">
+            <div style="display: flex; justify-content: center;align-items: center;background-color:rgb(56,58,86);width: 100%;height: 30%;flex-direction: column;">
+                <img style="width: 120px;height: 120px;" src="https://res.cloudinary.com/dkvsuatxf/image/upload/v1695305991/posts/fvezy874ihdqksctrr3u.png" alt="">
+                <h1 style="font-family: 'Dancing Script', cursive;color: white;font-size: 3rem;font-weight: 100;margin: 0;">Bem-vindo</h1>
             </div>
-           <div class="mainboxdivbottom">
-            <p >Olá,<span class="username">{{username}}</span></p>
+           <div style="height: 60%;padding: 20px 100px;" >
+            <p >Olá,<span style="color:green;">{{username}}</span></p>
             <p>
                 É com grande alegria que damos as boas-vindas a você à nossa Newsletter! Estamos empolgados por você se juntar à nossa comunidade de leitores e receber atualizações regulares sobre todas as notícias.
             </p>
@@ -105,7 +39,7 @@
             </p>
                 <a href="https://caliamag-api.onrender.com/">Voltar ao nosso site</a>
         </div>
-        <div class="rodape flex">
+        <div style="display: flex;justify-content: center;height: 10%;width: 100%;background-color:rgb(240, 240, 240) ;">
             <p>Caliamag {{year}}©, Todos os direitos reservados</p>
         </div>
         </div>
