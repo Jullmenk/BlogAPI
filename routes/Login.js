@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         });
       } else {
         res.status(400).json({ error: 'Wrong credentials' });
-      }
+      } 
     } else {
       res.status(400).json({ error: 'User not found' });
     }

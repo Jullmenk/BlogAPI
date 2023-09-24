@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require('dotenv').config()
 const cors = require('cors');
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser')
 const newsletterRoute = require('./routes/newsletter')
 const singlepostRouter = require('./routes/singlepost')
