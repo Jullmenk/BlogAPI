@@ -10,6 +10,7 @@ const logoutRouter = require('./routes/logout')
 const connectRoute = require('./routes/connected')
 // const loginRouter = require('./routes/login')
 const registerRoute = require('./routes/register')
+const loginroute = require('./routes/loginRoute')
 
 
 app.use(cors({
@@ -23,10 +24,11 @@ app.use('/uploads',express.static(__dirname + '/uploads'))
 mongoose.connect(process.env.DATABASE)
 app.use('/Register',registerRoute)
 app.use('/newsletter', newsletterRoute)
-// app.use('/Login',loginRouter)
+// app.use('/login',loginRouter)
 app.use('/connected',connectRoute)
 app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
+app.use('/login',loginroute)
 
 
 const PORT = process.env.PORT || 3001;
