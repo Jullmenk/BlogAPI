@@ -3,14 +3,13 @@ const handlebars = require('handlebars')
 const Email = require('../models/Email')
 const nodemailer = require('nodemailer');
 const fs = require('fs')
-//Registering
-
+require('dotenv').config()
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail', // e.g., 'Gmail'
     auth: {
-      user: 'caliamagao@gmail.com', // your email address
-      pass: 'ehvrnejyhsexbazc', // your email password
+      user: process.env.EMAIL_USER, // your email address
+      pass: process.env.EMAIL_KEY_SECRET, // your email password
     },
   });
 
