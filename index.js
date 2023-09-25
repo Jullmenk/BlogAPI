@@ -15,8 +15,8 @@ const loginroute = require('./routes/loginRoute')
 
 app.use(cors({
   credentials: true,
-  origin:'http://localhost:3000'
-  //origin:process.env.BASE_URL,
+  //origin:'http://localhost:3000'
+  origin:process.env.BASE_URL,
 }))
 app.use(express.json())
 app.use(cookieParser())
