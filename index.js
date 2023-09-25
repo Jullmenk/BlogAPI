@@ -11,7 +11,7 @@ const connectRoute = require('./routes/connected')
 // const loginRouter = require('./routes/login')
 const registerRoute = require('./routes/register')
 const loginroute = require('./routes/loginRoute')
-const Post = require('./models/Post')
+
 
 app.use(cors({
   credentials: true,
@@ -30,14 +30,7 @@ app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
 app.use('/login',loginroute)
 
-app.get('*', async (req,res)=>{
-  try {
-    res.json(await Post.find().sort({createdAt:-1}))    
-  } catch (error) {
-    console.log(error)
-    res.status(404).json({'err':error})
-  }
-})
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log("Backend is runningggg int the port:",PORT);
