@@ -15,7 +15,7 @@ const deleteRoute = require('./routes/delete')
 
 app.use(cors({
   credentials: true,
-  origin:'https://caliamagfront-jullmenk.vercel.app/'
+  origin:'https://caliamagfront-jullmenk.vercel.app'
 }))
 app.use(express.json())
 app.use(cookieParser())
