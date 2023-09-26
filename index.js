@@ -11,12 +11,12 @@ const connectRoute = require('./routes/connected')
 // const loginRouter = require('./routes/login')
 const registerRoute = require('./routes/register')
 const loginroute = require('./routes/loginRoute')
-
+const deleteRoute = require('./routes/delete')
 
 app.use(cors({
-  credentials: true,
-  origin:'http://localhost:3000'
-  //origin:process.env.BASE_URL,
+  // credentials: true,
+  // origin:'http://localhost:3000'
+  // //origin:process.env.BASE_URL,
 }))
 app.use(express.json())
 app.use(cookieParser())
@@ -29,7 +29,7 @@ app.use('/connected',connectRoute)
 app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
 app.use('/login',loginroute)
-
+app.use('/todelete',deleteRoute)
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
