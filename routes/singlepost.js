@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const {cloudinary} = require('../Utils/cloudinary');
-const { route } = require('./newsletter');
+
 
 router.get('/', async (req,res)=>{
   try {
@@ -28,7 +28,7 @@ router.get("/:id",async(req,res)=>{
     }
   })
 
-  router.get("/share/post/:id",async(req,res)=>{
+  router.get("/share/:id",async(req,res)=>{
     try {
       const {id} = req.params
       const postDoc= await Post.findById(id)
