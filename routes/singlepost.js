@@ -3,6 +3,7 @@ const Post = require('../models/Post')
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const {cloudinary} = require('../Utils/cloudinary');
+const { route } = require('./newsletter');
 
 router.get('/', async (req,res)=>{
   try {
@@ -20,14 +21,45 @@ router.get("/:id",async(req,res)=>{
     postDoc.views += 1
     await postDoc.save();
     res.json(postDoc)
-    
   }
-  
     catch(error){
       console.log(error)
       res.status(500).json({ error: 'Internal Server Error' });
     }
   })
+
+  router.get("/share/post/:id",async(req,res)=>{
+    try {
+      const {id} = req.params
+      const postDoc= await Post.findById(id)
+      res.status(200).send(`<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="${postDoc.summary}">
+          <title>${postDoc.title}</title>
+          
+          </head>
+      </html>
+      `)
+    }
+      catch(error){
+        res.status(404).send(`<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Something went wrong</title>
+            
+            </head>
+        </html>
+        `)
+      }
+  })
+
+
+
 router.post('/',upload.single('file'),async (req,res)=>{
   try {
     const {title,summary,content,category,file} = req.body
