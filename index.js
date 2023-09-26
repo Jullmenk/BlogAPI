@@ -14,9 +14,10 @@ const loginroute = require('./routes/loginRoute')
 
 
 app.use(cors({
-  credentials: true,
+  /*credentials: true,
   //origin:'http://localhost:3000'
-  origin:'https://caliamagfront.vercel.app/',
+  origin:
+  'https://caliamagfront.vercel.app/',*/
 }))
 app.use(express.json())
 app.use(cookieParser())
