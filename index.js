@@ -14,9 +14,6 @@ const loginroute = require('./routes/loginRoute')
 const deleteRoute = require('./routes/delete')
 
 app.use(cors({
-  // credentials: true,
-  // origin:'http://localhost:3000'
-  // //origin:process.env.BASE_URL,
 }))
 app.use(express.json())
 app.use(cookieParser())
