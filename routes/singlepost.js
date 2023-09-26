@@ -42,7 +42,7 @@ router.get("/:id",async(req,res)=>{
           
           </head>
       </html>
-      `)
+      `).contentType('text/html')
     }
       catch(error){
         res.status(404).send(`<!DOCTYPE html>
@@ -54,7 +54,7 @@ router.get("/:id",async(req,res)=>{
             
             </head>
         </html>
-        `)
+        `).contentType('text/html')
       }
   })
 
