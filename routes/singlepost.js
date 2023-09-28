@@ -62,7 +62,7 @@ router.get("/:id",async(req,res)=>{
 
 router.post('/',upload.single('file'),async (req,res)=>{
   try {
-    const {title,summary,content,category,file} = req.body
+    const {title,summary,content,category,file,postlink} = req.body
     const uploadResponse = await cloudinary.uploader.upload(file,{
       upload_preset:'posts'
     })
@@ -72,6 +72,7 @@ router.post('/',upload.single('file'),async (req,res)=>{
       summary,
       content,
       category,
+      postlink,
       cover:uploadResponse.url,
     })
      console.log('Response data:', postDoc); 

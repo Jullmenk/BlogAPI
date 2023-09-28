@@ -12,10 +12,13 @@ const connectRoute = require('./routes/connected')
 const registerRoute = require('./routes/register')
 const loginroute = require('./routes/loginRoute')
 const deleteRoute = require('./routes/delete')
+const messageRouter = require('./routes/message')
+
 
 app.use(cors({
   credentials: true,
   origin:'https://caliamagfront-jullmenk.vercel.app'
+  //origin:'http://localhost:3000'
 }))
 app.use(express.json())
 app.use(cookieParser())
@@ -29,7 +32,7 @@ app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
 app.use('/login',loginroute)
 app.use('/todelete',deleteRoute)
-
+app.use('/message',messageRouter)
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -7,6 +7,7 @@ summary:String,
 content:String,
 cover:String,
 category:String,
+postlink:String,
 views: { type: Number, default: 0 },
 },{timestamps:true})
 
