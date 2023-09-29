@@ -84,4 +84,44 @@ router.post('/',upload.single('file'),async (req,res)=>{
     
 })
 
+router.put('/',upload.single('file'),async (req,res)=>{
+  try {
+    const {title,summary,content,category,file,postlink,pagetodelete} = req.body
+    const imgdif = await Post.findById(pagetodelete)
+    let newData = {}
+    let uploadResponse = {}
+    if(file!==imgdif.cover){
+       uploadResponse = await cloudinary.uploader.upload(file,{
+        upload_preset:'posts'
+      })
+       newData = {
+        title,
+        summary,
+        content,
+        category,
+        postlink,
+        cover:uploadResponse.url,
+      }
+    }
+    else{
+       newData = {
+        title,
+        summary,
+        content,
+        category,
+        postlink,
+        cover:file,
+      }
+    }
+
+    const find = await Post.findByIdAndUpdate(pagetodelete,newData,{new:true})
+     console.log('Response data:', newData); 
+     res.status(200).json(newData)
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({err:`Error: ${error}`})
+    }
+    
+})
+
 module.exports = router

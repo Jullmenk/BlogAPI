@@ -21,7 +21,7 @@ router.post('/',async (req,res)=>{
            // to: 'julinolady@gmail.com', 
             subject: title, // Email subject
             html:`
-            <p>Essa email está a ser enviado por: ${name}</p>
+            <p>Esse email está a ser enviado por: ${name}</p>
             <p>Email: ${email}</p>
             <strong>Tema da mensagem: ${title}</strong>
             <p></p>
