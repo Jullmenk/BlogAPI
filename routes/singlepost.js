@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const {cloudinary} = require('../Utils/cloudinary');
-
+const fs = require('fs');
 
 router.get('/', async (req,res)=>{
   try {
@@ -32,17 +32,24 @@ router.get("/:id",async(req,res)=>{
     try {
       const {id} = req.params
       const postDoc= await Post.findById(id)
-      res.status(200).send(`<!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta name="description" content="${postDoc.summary}">
-          <title>${postDoc.title}</title>
-          
-          </head>
-      </html>
-      `).contentType('text/html')
+      fs.readFile('share.html', 'utf8', (err, template) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        // Replace placeholders with data
+        const renderedHTML = template
+            .replace('{{category}}', postDoc.category)
+            .replace('{{title}}', postDoc.title)
+            .replace('{{cover}}', postDoc.cover)
+            .replace('{{content}}', postDoc.content)
+            .replace('{{summary}}', postDoc.summary);
+
+        // Send the rendered HTML as the response
+        res.send(renderedHTML).contentType('text/html');
+    });
     }
       catch(error){
         res.status(404).send(`<!DOCTYPE html>
