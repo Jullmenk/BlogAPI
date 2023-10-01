@@ -48,8 +48,7 @@ router.get("/:id",async(req,res)=>{
             .replace('{{summary}}', postDoc.summary);
 
         // Send the rendered HTML as the response
-        res.send(renderedHTML).contentType('text/html');
-    });
+        res.type('html').send(renderedHTML)    });
     }
       catch(error){
         res.status(404).send(`<!DOCTYPE html>
