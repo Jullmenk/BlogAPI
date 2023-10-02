@@ -28,43 +28,6 @@ router.get("/:id",async(req,res)=>{
     }
   })
 
-  router.get("/share/:id",async(req,res)=>{
-    try {
-      const {id} = req.params
-      const postDoc= await Post.findById(id)
-      fs.readFile('share.html', 'utf8', (err, template) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
-
-        // Replace placeholders with data
-        const renderedHTML = template
-            .replace('{{category}}', postDoc.category)
-            .replace('{{title}}', postDoc.title)
-            .replace('{{cover}}', postDoc.cover)
-            .replace('{{content}}', postDoc.content)
-            .replace('{{summary}}', postDoc.summary);
-
-        // Send the rendered HTML as the response
-        res.type('html').send(renderedHTML)    });
-    }
-      catch(error){
-        res.status(404).send(`<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Something went wrong</title>
-            
-            </head>
-        </html>
-        `).contentType('text/html')
-      }
-  })
-
-
 
 router.post('/',upload.single('file'),async (req,res)=>{
   try {

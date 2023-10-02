@@ -17,7 +17,7 @@ const messageRouter = require('./routes/message')
 
 app.use(cors({
   credentials: true,
-  origin:'https://caliamagfront-jullmenk.vercel.app'
+  origin:process.env.BASE_URL
   // origin:'http://localhost:3000'
 }))
 app.use(express.json())
