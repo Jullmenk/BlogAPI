@@ -8,10 +8,8 @@ const newsletterRoute = require('./routes/newsletter')
 const singlepostRouter = require('./routes/singlepost')
 const logoutRouter = require('./routes/logout')
 const connectRoute = require('./routes/connected')
-// const loginRouter = require('./routes/login')
 const registerRoute = require('./routes/register')
 const loginroute = require('./routes/loginRoute')
-const deleteRoute = require('./routes/delete')
 const messageRouter = require('./routes/message')
 
 
@@ -26,12 +24,10 @@ app.use('/uploads',express.static(__dirname + '/uploads'))
 mongoose.connect(process.env.DATABASE)
 app.use('/Register',registerRoute)
 app.use('/newsletter', newsletterRoute)
-// app.use('/login',loginRouter)
 app.use('/connected',connectRoute)
 app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
 app.use('/login',loginroute)
-app.use('/todelete',deleteRoute)
 app.use('/message',messageRouter)
 
 const PORT = process.env.PORT || 3001;

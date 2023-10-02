@@ -33,7 +33,13 @@
     .mainboxbottom p{
         padding-top: 20px; margin-left: 30%;width: 50%;
     }
-    @media (max-width:430px) 
+    .cover{
+        width: 70%;
+        margin-left: 20%;
+        height: 200px;
+        display: block;
+    }
+    @media (max-width:455px) 
     {
         body{
             background-color: white;
@@ -62,6 +68,12 @@
     }
     .mainboxbottom{
         padding-bottom: 20px;
+    }
+    .cover{
+        width: 100%;
+        margin: 0;
+        height: 200px;
+        display: block;
     }
     }
 
@@ -93,6 +105,7 @@
         padding-bottom: 20px;
     }
     }
+
 </style>
 </head>
 <body style=" ">
@@ -103,26 +116,13 @@
             </div>
            <div class="mainboxmiddle" >
             <p >Olá,<span style="color:green;">{{username}}</span></p>
-            <p>
-                É com grande alegria que damos as boas-vindas a você à nossa Newsletter! Estamos empolgados por você se juntar à nossa comunidade de leitores e receber atualizações regulares sobre todas as notícias.
-            </p>
-            <p>Nossa Newsletter é o seu passaporte para um mundo de conteúdo exclusivo, dicas úteis e informações relevantes. Aqui estão algumas coisas emocionantes que você pode esperar:</p>
-            <ul>
-                <li>Conteúdo Exclusivo: Nossos especialistas estão dedicados a trazer a você informações de alta qualidade, artigos exclusivos e insights valiosos.</li>
-                <li>Novidades em Primeira Mão: Você será o primeiro a saber sobre os lançamentos de produtos, eventos e promoções especiais relacionadas a caliamag.</li>
-            </ul>
-            <p>
-                Agradecemos por confiar em nós como sua fonte confiável de informações. Comprometemo-nos a fornecer conteúdo de qualidade que enriqueça sua vida e aprimore seus conhecimentos
-            </p>
-            <p>
-                Lembre-se de que estamos aqui para você. Se tiver alguma pergunta, sugestão ou desejar compartilhar algo conosco, não hesite em nos contatar. A sua opinião é fundamental para nós.
-            </p>
-            <p>Agora que você faz parte da nossa comunidade, fique atento à sua caixa de email, pois nossa Newsletter será enviada regularmente para mantê-lo atualizado.</p>
-            <p>
-                Mais uma vez, obrigado por se juntar a nós! Mal podemos esperar para compartilhar conhecimentos incríveis com você.
-            </p>
-                <a style="padding: 10px 20px; background-color: green; color: white;text-decoration: none;" href="https://caliamag-api.onrender.com/">Voltar ao nosso site</a>
-        </div>
+                <p>Assunto: Novidades emocionantes da nossa comunidade!</p>
+                <p>Esperamos que você esteja tendo um mês maravilhoso até agora! Temos algumas atualizações emocionantes e notícias para compartilhar consigo. Estamos empolgados em continuar a crescer e evoluir, e é graças ao apoio e dedicação de você que isso é possível. Aqui estão as últimas novidades:</p>
+                <img class="cover" src={{imgtosend}} alt="">
+                <h3>{{titlepost}}</h3>
+                <p>{{summary}}</p>
+                <a style="padding: 10px 20px; background-color: green; color: white;text-decoration: none;" href={{link}}>Ver completo</a>
+            </div>
         <div class="mainboxbottom">
             <p>Caliamag {{year}} ©, Todos os direitos reservados</p>
         </div>

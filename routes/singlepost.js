@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const multer = require('multer')
 const upload = multer({dest:'uploads/'})
 const {cloudinary} = require('../Utils/cloudinary');
-const fs = require('fs');
+const {sendtouser} = require('../controllers/newsletterControllers')
 
 router.get('/', async (req,res)=>{
   try {
@@ -44,6 +44,7 @@ router.post('/',upload.single('file'),async (req,res)=>{
       postlink,
       cover:uploadResponse.url,
     })
+    sendtouser(req,res,uploadResponse.url)
      console.log('Response data:', postDoc); 
      res.status(200).json(postDoc)
     } catch (error) {
@@ -92,5 +93,25 @@ router.put('/',upload.single('file'),async (req,res)=>{
     }
     
 })
+  router.delete('/', async (req, res) => {
+    const { pagetodelete } = req.body;
+    try {
+      const post = await Post.findByIdAndDelete(pagetodelete);
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+      const imgid = post.cover;
+      console.log(post);
+      if (imgid) {
+        await cloudinary.uploader.destroy(imgid);
+      }
+      console.log('Deletion successful');
+      res.status(200).json({ message: 'Deletion successful' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
 
 module.exports = router
