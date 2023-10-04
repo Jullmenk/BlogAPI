@@ -52,7 +52,7 @@ exports.newsletter = async(req,res)=>{
 }
 
 exports.sendtouser = async(req,res,img)=>{
-  const {title,summary,postlink} = req.body
+  const {title,summary} = req.body
   const currentDate = new Date().getFullYear()
   const sendemail = await Email.find()
   const source = fs.readFileSync('message.html','utf-8').toString();
