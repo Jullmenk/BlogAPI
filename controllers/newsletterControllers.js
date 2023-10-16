@@ -4,6 +4,8 @@ const nodemailer = require('nodemailer');
 const fs = require('fs')
 require('dotenv').config()
 const Post = require('../models/Post')
+const inLineCss = require('nodemailer-juice');
+
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail', // e.g., 'Gmail'
@@ -12,6 +14,8 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_KEY_SECRET, // your email password
   },
 });
+
+transporter.use('compile', inLineCss());
 
 exports.newsletter = async(req,res)=>{
 

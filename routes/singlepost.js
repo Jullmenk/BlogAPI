@@ -44,8 +44,8 @@ router.post('/',upload.single('file'),async (req,res)=>{
       postlink,
       cover:uploadResponse.url,
     })
-    sendtouser(req,res,uploadResponse.url)
-     console.log('Response data:', postDoc); 
+     sendtouser(req,res,uploadResponse.url)
+    console.log('Response data:', postDoc); 
      res.status(200).json(postDoc)
     } catch (error) {
       console.log(error)
