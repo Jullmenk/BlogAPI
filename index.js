@@ -12,17 +12,18 @@ const registerRoute = require('./routes/register')
 const loginroute = require('./routes/loginRoute')
 const messageRouter = require('./routes/message')
 
-
 app.use(cors({
   credentials: true,
    origin:process.env.BASE_URL
- // origin:'http://localhost:3000'
+  //origin:'http://localhost:3000'
 }))
 app.use(express.json( {limit: '50mb'}))
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser())
 app.use('/uploads',express.static(__dirname + '/uploads'))
 mongoose.connect(process.env.DATABASE)
+
+
 
 app.use('/Register',registerRoute)
 app.use('/newsletter', newsletterRoute)
@@ -31,6 +32,7 @@ app.use('/logout',logoutRouter)
 app.use('/post',singlepostRouter)
 app.use('/login',loginroute)
 app.use('/message',messageRouter)
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
