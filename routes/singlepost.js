@@ -142,12 +142,18 @@ router.put('/',upload.single('file'),async (req,res)=>{
   router.get('/page/:id',async(req,res)=>{
     try {
       const id = req.params.id
-       const postDoc= await Post.findById(id)
+       let postDoc= await Post.findById(id)
+       let meth=Post;
+       if (!postDoc){
+        postDoc = await Others.findById(id)
+        meth = Others
+       }
         if (!postDoc) {
           console.log('not found')
           return res.status(404).json({ error: 'Post not found' });
         }
-        const categoryPosts = await Post.find({ category:postDoc.category }).sort({ createdAt: -1 }).limit(18);
+        const categoryPosts = await meth.find({ category:postDoc.category }).sort({ createdAt: -1 }).limit(18);
+        
           postDoc.views += 1
          await postDoc.save();
         const postDetail = await [postDoc,categoryPosts]
