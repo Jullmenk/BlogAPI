@@ -8,10 +8,10 @@ const handlebars = require('handlebars')
 
 
 const transporter = nodemailer.createTransport({
-    service: 'Gmail', // e.g., 'Gmail'
+    service: 'Gmail',
     auth: {
-      user: process.env.EMAIL_USER, // your email address
-      pass: process.env.EMAIL_KEY_SECRET, // your email password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_KEY_SECRET, 
     },
   });
 
@@ -20,10 +20,9 @@ router.post('/',async (req,res)=>{
     const {name,email,message,title} = req.body
     try {
         const mailOptions = {
-            from: 'caliamagao@gmail.com', // Sender's email address
-             to: 'caliamag@proton.me', // Recipient's email address (you can use the provided email or a different one)
-           // to: 'julinolady@gmail.com', 
-            subject: title, // Email subject
+            from: 'caliamagao@gmail.com',
+             to: 'caliamag@proton.me', 
+            subject: title,
             html:`
             <p>Esse email está a ser enviado por: ${name}</p>
             <p>Email: ${email}</p>
@@ -76,12 +75,12 @@ router.post('/emails',async(req,res)=>{
           }
           const htmltosend = template(replacements)
           const mailOptions = {
-            from: 'caliamagao@gmail.com', // Sender's email address
-            to: elem.email, // Recipient's email address (you can use the provided email or a different one)
-            subject:title, // Email subject
+            from: 'caliamagao@gmail.com',  
+            to: elem.email, 
+            subject:title, 
             html:htmltosend, 
           };
-          // Send the email
+ 
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
               console.error('Error sending email:', error);
