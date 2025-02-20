@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 router.post('/', async (req, res) => {
   const { username, password, role } = req.body;
   try {
-    const hashedPassword = bcrypt.hashSync(password, 10); // Generate a salt and hash the password
+    const hashedPassword = bcrypt.hashSync(password, 10);  
     const userDoc = await User.create({
       username,
       password: hashedPassword, // Use the hashed password
